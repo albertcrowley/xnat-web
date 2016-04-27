@@ -13,6 +13,8 @@
 
 <script src="$content.getURI('/scripts/xnat/app/customPage.js')"></script>
 
+<script src="$content.getURI('/scripts/Administration.js')"></script>
+
 #if ($pg)
 
     ## if there's a page at '*templates/pages/name.vm' then use that

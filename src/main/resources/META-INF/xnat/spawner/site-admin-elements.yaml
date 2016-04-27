@@ -103,6 +103,46 @@ siteSetup:
         ${siteInfo}
         ${adminInfo}
 
+
+themeScript:
+    tag: script|type=text/javascript
+    attr:
+        src: ../../scripts/themeManagement.js
+
+currentTheme:
+    label: Current Theme
+    tag: span
+    description: The currently selected global theme.
+    html: None
+
+existingTheme:
+    label: Select an existing theme
+    tag: select
+    description: Selected a new global theme from those available on the system.
+    html: None
+
+uploadTheme:
+    label: Upload a theme package
+    tag: span
+    description: Upload a zipped theme package for selection above.
+    html: None
+
+
+themeManagement:
+    label: Theme Management
+    type: panel
+    controls:
+       ${themeScript}
+       ${currentTheme}
+       ${existingTheme}
+       ${uploadTheme}
+
+themesAndFeatures:
+    label: Themes & Features
+    type: tab
+    contents:
+        $(themeManagement}
+
 xnatSetup:
     label: XNAT Setup
     type: tabGroup
