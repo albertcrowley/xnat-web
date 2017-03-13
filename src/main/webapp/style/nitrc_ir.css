@@ -1,0 +1,64 @@
+.ir_title {
+	font-size: 18px;
+	color: #920040;
+}
+
+a.ir_title, a:hover.ir_title, a:visited.ir_title, a:link.ir_title {
+	text-decoration: none;
+	color: #920040;
+}
+
+div.ir_search_box {
+	display:none;
+}
+
+.ir_globalControls {
+	font-size: 13px;
+}
+
+.ir_globalControls a {
+	font-weight: normal;
+}
+
+#globalSearchForm {
+	font-size: 13px;
+}
+
+.nitrc ol#globalNavigation li ol a {font-size: 12px;}
+
+
+/* IR Project List UI changes */
+div.IR-project-list {
+	padding-top:1ex;
+	padding-bottom:1ex;
+	line-height:2.5ex;
+	border-bottom-color: #ADB0B9;
+}
+
+.IR-project-list a.join , .IR-project-list a.join:visited {
+	color: #3D0185;
+}
+
+
+.IR-project-list a , .IR-project-list a:visited {
+	color: #5A6072;
+}
+
+div.IR-project-list-name a ,  div.IR-project-list-name a:visited {
+	font-size: 1em;
+}
+
+/* copy of globalFeedback from NITRC */
+div#globalFeedback {
+	background-color: #F6D07E;
+	padding: 1em;
+}
+
+.ui-widget {
+    font-family: Arial, sans-serif; font-size: 12px;
+}   
+.ui-autocomplete {
+  z-index: 10000 !important;
+  max-height:20em;
+  overflow: auto;
+}

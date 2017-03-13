@@ -60,16 +60,22 @@
         <!--can't read data-->
         #parse($turbineUtils.getTemplateName("_summary_tabs","xnat:projectData",$project.getId()))
 
-        <DIV id="congratsContainer" class="container" style="width:98%;margin:5px;background-color:#ff99cc;">
-            <DIV id="congratsBody" class="containerBody">
-                <DIV class="containerItem edit_header2" style="white-space:normal;line-height:18px">
+    <DIV id="globalFeedback" class="container" style="clear:both">
+        <DIV class="" style="white-space:normal;line-height:18px;margin-bottom:1ex;"><FONT size="+1">Protected Data </FONT></DIV>
+        #if( $user.isGuest() )
+            <p class='warning-message'>Access to this data set requires that you be logged in to NITRC and that your account belongs to
+                the associated NITRC tool/resource.</p>
+            <p class='warning-message'>If you are a NITRC user, please <a class="nitrc-r" href='/account/login.php?feedback=A%20NITRC%20account%20is%20required%20to%20access%20this%20data.%20%20Please%20log%20in%20or%20register%20for%20an%20account%20if%20you%20do%20not%20have%20one.<br>%20%20If%20you%20are%20not%20a%20member%20of%20the%20$!{project.getName()}%20you%20will%20be%20prompted%20to%20request%20access%20to%20this%20data%20after%20completing%20your%20log%20in.&return_to=%2Fxnat%2Flogin_return.php%3Freturn_to%3D%2Fir%2Fapp%2Ftemplate%2FXDATScreen_report_xnat_projectData.vm%2Fsearch_element%2Fxnat%3AprojectData%2Fsearch_field%2Fxnat%3AprojectData.ID%2Fsearch_value%2F$!{project.getId()}'>log in and try again.</a>
+                If your NITRC account does not have access to this data set, you will be offered a chance to request access.
+                If you do not have a NITRC account, you may <a class="nitrc-r" href='/account/register.php'>register for one here.</a></p>
+        #else
                     <FONT size="+1">Security Warning</FONT></DIV>
                 <DIV class="containerItem" style="white-space:normal;">
-                    Your account has not been granted access to this $displayManager.getSingularDisplayNameForProject().toLowerCase()'s data. If you would like to view this data, you will need to request access.
-                </DIV>
-                <DIV class="containerItem" style="white-space:normal;">
-                    &nbsp;&nbsp;&nbsp;&bull; <A href="$link.setPage("RequestProjectAccess.vm").addPathInfo(
-                    "project","$!{project.getId()}").addPathInfo("popup","$!popup")">Request Access.</A></DIV>
+
+            If you have not requested access to $project.getName()'s protected data, please <A class="nitrc-r" href="/ir/return_to_nitrc.jsp?name=$!item.getStringProperty("xnat:projectData/id")&action=join">request access here</A>.
+            <br/><br/>
+            If you have done so already, your request may be pending approval by an $project.getName() administrator.
+        #end
             </DIV>
         </DIV>
     #end

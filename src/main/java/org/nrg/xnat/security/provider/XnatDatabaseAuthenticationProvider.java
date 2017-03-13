@@ -20,11 +20,15 @@ import org.springframework.security.authentication.encoding.PlaintextPasswordEnc
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsChecker;
+import org.nrg.xnat.security.provider.NITRCDatabaseAuthenticationProvider;
+import org.nrg.xnat.security.provider.XnatAuthenticationProvider;
 
-public class XnatDatabaseAuthenticationProvider extends DaoAuthenticationProvider implements XnatAuthenticationProvider {
+public class XnatDatabaseAuthenticationProvider extends NITRCDatabaseAuthenticationProvider implements XnatAuthenticationProvider {
 
     public XnatDatabaseAuthenticationProvider() {
         super();
+        log("constructor of XnatDatabaseAuthenticationProvider.");
+        System.out.println("constructor of XnatDatabaseAuthenticationProvider.");
         setPreAuthenticationChecks(new PreAuthenticationChecks());
     }
 
@@ -84,6 +88,7 @@ public class XnatDatabaseAuthenticationProvider extends DaoAuthenticationProvide
 
     @Override
     protected void additionalAuthenticationChecks(final UserDetails userDetails, final UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
+        System.out.println("ATC: in additionalAuthChecks XnatDatabaseAuthProvider");
         if (!UserI.class.isAssignableFrom(userDetails.getClass())) {
             throw new AuthenticationServiceException("User details class is not of a type I know how to handle: " + userDetails.getClass());
         }
